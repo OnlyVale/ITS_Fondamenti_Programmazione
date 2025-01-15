@@ -1,40 +1,48 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
+#include <stdlib.h>  // Per malloc()
+
+#define P_GRECO 3.14
 
 int calcolo(int x, int y){
     int z = x + y;
-
-   return z;
+    return z;
 }
 
 void saluto(){
-    printf("Hello World");
+    printf("Hello World\n");
 }
 
 char *frase_utente() {
-  char frase[64];
-  printf("Inserisci una frase: ");
-  scanf("%s", frase);
-  char *frase_utente;
-  frase_utente = (char *) malloc(6 * sizeof (char));
-  strcpy(frase_utente, frase);
-  return frase_utente;
+    char frase[64];
+    printf("Inserisci una frase: ");
+    scanf("%63s", frase);  // Limita l'input a 63 caratteri per evitare overflow
+    char *frase_utente = (char *) malloc(strlen(frase) + 1);  // Alloca memoria in base alla lunghezza della stringa
+    strcpy(frase_utente, frase);
+    return frase_utente;
+}
+
+float CalcoloAreaCerchio(float raggio){
+    float calcolo_area = pow(raggio, 2) * P_GRECO;
+    return calcolo_area;
 }
 
 int main()
 {
-    printf("Hello World");
+    float raggio, area;
+    printf("Inserisci il raggio del cerchio: ");
+    scanf("%f", &raggio);
+    area = CalcoloAreaCerchio(raggio);
+    printf("L'area del cerchio è: %.2f\n", area);
 
-    int numero1 = 10;
-    int numero2 = 20;
-
-     char *frase_utente_2 = frase_utente();
-
-    int risultato = calcolo(numero1, numero2);
-
-    printf("\n%d\n", risultato);
+    // Esegui altre operazioni se desiderato
     saluto();
 
-    printf("%s", frase_utente_2);
+    // Facoltativo: Chiedi una frase all'utente
+    //char *frase_utente_2 = frase_utente();
+    //printf("La frase inserita è: %s\n", frase_utente_2);
+    //free(frase_utente_2);  // Non dimenticare di liberare la memoria
+
     return 0;
 }
