@@ -14,6 +14,7 @@ void saluto(){
     printf("Hello World\n");
 }
 
+/*
 char *frase_utente() {
     char frase[64];
     printf("Inserisci una frase: ");
@@ -22,9 +23,10 @@ char *frase_utente() {
     strcpy(frase_utente, frase);
     return frase_utente;
 }
+*/
 
 float CalcoloAreaCerchio(float raggio){
-    float calcolo_area = pow(raggio, 2) * P_GRECO;
+    float calcolo_area = raggio * raggio * P_GRECO;
     return calcolo_area;
 }
 
